@@ -20,15 +20,70 @@
             color: #fff;
             font-weight: 600;
             font-size: 1.25rem;
+
+            &.selected {
+                color: rgb(201, 201, 201);
+            }
         }
 
         .link:hover {
             cursor: pointer;
+            color: rgb(201, 201, 201);
+            transition: color .4s ease 0s;
         }
     }
 
     .icons-container {
-        // margin-right: .5rem;
-        border: 1px solid red;
+        margin-right: 4rem !important;
     }
 }
+
+.header-main-container-mobile {
+    background-color: rgb(42, 83, 193);
+    display: none;
+    padding: .5rem;
+
+    .icons-container {
+        display: grid;
+        grid-template-columns: repeat(3, auto);
+        gap: 10px;
+    }
+}
+
+.mobile-expanded-header {
+    background-color: rgb(42, 83, 193) !important;
+    position: relative;
+    color: #fff;
+
+    .ant-col {
+        font-size: 1rem !important;
+    }
+
+    .close-button {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        color: #fff;
+        font-size: 20px !important;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .header-main-container {
+        .links-container {
+            .link {
+                font-size: .8rem;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .header-main-container {
+        display: none;
+    }
+
+    .header-main-container-mobile {
+        display: block;
+    }
+  }

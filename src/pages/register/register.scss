@@ -1,0 +1,57 @@
+.register-form-container {
+    height: 100vh;
+
+    .form-container {
+        padding: 0 5rem;
+        // border: 1px solid red;
+
+        .input-form {
+            width: 100%;
+
+            .ant-btn {
+                background-color: rgb(42, 83, 193);
+                color: #fff;
+                width: 5rem;
+            }
+
+            .ant-checkbox-checked .ant-checkbox-inner {
+                background-color: rgb(42, 83, 193);
+                border-color: rgb(42, 83, 193);
+            }
+
+            .register-btn-container {
+
+                .ant-form-item {
+                    margin-bottom: 0;
+                }
+
+                .login-now {
+                    color: rgb(42, 83, 193);
+                    margin-left: .5rem;
+                }
+    
+                .login-now:hover {
+                    cursor: pointer;
+                }
+
+            }
+        }
+    }
+
+}
+
+@media screen and (max-width: 600px) {
+    .register-form-container {
+        height: 90vh;
+        .form-container {
+            padding: 0 1rem;
+            background-image: url("../../Assests/loginIllustration_mobile.svg");
+            background-repeat: no-repeat;
+            background-size: contain;
+        }
+
+        .image-container {
+            display: none;
+        }
+    }
+}

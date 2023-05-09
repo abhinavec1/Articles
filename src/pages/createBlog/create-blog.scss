@@ -1,0 +1,58 @@
+.write-blog-main-container {
+    padding: 0 12rem;
+
+    .content-box {
+        resize: none;
+        height: 300px;
+    }
+
+    .submit-button {
+        margin-left: auto;
+        background-color: rgb(42, 83, 193);
+        color: #fff;
+    }
+
+    .tags-container {
+        display: grid;
+        grid-template-columns: repeat(6, auto);
+        gap: 10px;
+
+        .ant-btn {
+            font-size: 1.2rem;
+            width: 10rem;
+            border: 2px solid rgb(42, 83, 193);
+            color: rgb(42, 83, 193);
+
+            &.tag-selected {
+                background-color: rgb(42, 83, 193);
+                color: #ffffff;
+            }
+        }
+
+    }
+
+    .ant-input {
+        border-color: rgba(0,0,0,0.5);
+    }
+
+    .ant-form-item-control-input-content:has(.submit-button) {
+        display: flex;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .write-blog-main-container {
+        padding: 0 1rem;
+        margin-top: 1rem;
+
+        .tags-container {
+        grid-template-columns: repeat(3, auto);
+        gap: 10px;
+
+            .ant-btn {
+                width: 6rem;
+                font-size: .75rem;
+            }
+        }
+    }
+  }

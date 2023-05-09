@@ -1,0 +1,70 @@
+.app-main-container {
+
+    .heading-container {
+        margin-top: 2rem;
+        color: rgb(14, 28, 64);
+
+        .website-name {
+            font-size: 10rem;
+            font-weight: 600;
+        }
+
+        .vertical-line {
+            border-right: 5px solid rgb(14, 28, 64);
+            margin: 0 .5rem;
+            margin-top: 3.5rem;
+            height: 5rem;
+            background-color: rgb(14, 28, 64);
+        }
+
+        .website-desc {
+            font-size: 22px;
+            width: 5rem;
+            margin-top: 2rem;
+            line-height: 1;
+            font-weight: 600;
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .app-main-container {
+        .heading-container {
+            .website-name {
+                font-size: 130px;
+            }
+    
+            .vertical-line {
+                margin-top: 1.5rem;
+                height: 4rem;
+            }
+
+            .website-desc {
+                margin-top: 1.5rem;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .app-main-container {
+        .heading-container {
+            margin-top: 1rem;
+            display: flex;
+            flex-direction: column;
+
+            .website-name {
+                font-size: 54px;
+            }
+
+            .vertical-line {
+                display: none;
+            }
+
+            .website-desc {
+                width: auto;
+                margin-top: 0;
+            }
+        }
+    }
+  }

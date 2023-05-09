@@ -1,0 +1,48 @@
+.subheader-main-container {
+    padding: 0 5rem;
+
+    .categories-container {
+        height: 100%;
+
+        .category-item {
+            display: flex;
+            align-items: center;
+            font-size: 1rem;
+        }
+
+        .category-item:hover {
+            cursor: pointer;
+            color: rgb(42, 83, 193);
+        }
+    }
+
+    .login-button {
+        border-color: rgb(42, 83, 193);
+        color: rgb(42, 83, 193);
+    }
+}
+
+.subheader-main-container-mobile {
+    display: none;
+    margin-top: 2rem;
+
+    .action-container {
+        background-color: rgb(42, 83, 193);
+        color: #fff;
+        padding: 1rem .5rem;
+    }
+
+    .dropdown-container {
+        padding: 0 .5rem;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .subheader-main-container {
+        display: none;
+    }
+
+    .subheader-main-container-mobile {
+        display: flex;
+    }
+}

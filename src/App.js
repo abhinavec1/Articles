@@ -1,11 +1,16 @@
 import React from 'react';
-import Header from './components/Header';
+import { Route, Routes } from 'react-router-dom';
+import Login from './pages/login';
+import RegisterPage from './pages/register';
+import CustomRoutes from './Routes';
 
 function App() {
   return (
-    <div>
-      <Header />
-    </div>
+      <Routes>
+        <Route path='/login' element={<Login />} />
+        <Route path='/register' element={<RegisterPage />} />
+        <Route path="*" element={<CustomRoutes />} />
+      </Routes>
   );
 }
 
