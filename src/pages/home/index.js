@@ -64,11 +64,11 @@ const HomePage = () => {
     const getBlogsList = async () => {
         try {
             const response = await API_MANAGER.getBlogsList(pageNo)
-            console.log(response, '-------blogs-list------')
             setBlogsList(response?.data?.articles)
             setBlogsToDisplay(response?.data?.articles)
         } catch (err) {
-            message.error("Something went wrong")
+            const error = err?.response?.data?.error
+            message.error(error || "Something went wrong")
         }
     }
 

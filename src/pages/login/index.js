@@ -31,6 +31,9 @@ const Login = () => {
                     password: currentHashedPassword
                 }
                 const loginResponse = await API_MANAGER.login(parsedData)
+                if (loginResponse.headers["x-session-id"] === undefined || loginResponse.headers["x-session-id"] === null || loginResponse.headers["x-session-id"] === "") {
+                    throw new Error("Something went wrong")
+                }
                 message.success("Login successfull")
                 Cookies.set("X-Session-Id", loginResponse.headers["x-session-id"])
                 navigate("/")
@@ -40,8 +43,8 @@ const Login = () => {
             }
         } 
         catch (err) {
-            message.error("An error has occured")
-            console.log(err)
+            const error = err?.response?.data?.error
+            message.error(error || "Something went wrong")
         }
       }
 

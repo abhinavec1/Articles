@@ -105,7 +105,8 @@ const BlogDetailpage = () => {
             setAllComments(parsedData)
         }
         catch (err) {
-            message.error("Something went wrong")
+            const error = err?.response?.data?.error
+            message.error(error || "Something went wrong")
         }
     }
 
@@ -120,7 +121,8 @@ const BlogDetailpage = () => {
             getComments()
         }
         catch (err) {
-            message.error("Something went wrong")
+            const error = err?.response?.data?.error
+            message.error(error || "Something went wrong")
         }
     }
 
@@ -130,7 +132,8 @@ const BlogDetailpage = () => {
             setIsBlogLiked(response?.data?.is_liked)
         }
         catch (err) {
-            message.error("Something went wrong")
+            const error = err?.response?.data?.error
+            message.error(error || "Something went wrong")
         }
     }
 
@@ -139,8 +142,9 @@ const BlogDetailpage = () => {
             const resposnse = await API_MANAGER.likeArticle(id)
             setIsBlogLiked(true)
         }
-        catch {
-            message.error("Something went wrong")
+        catch (err) {
+            const error = err?.response?.data?.error
+            message.error(error || "Something went wrong")
         }
     }
 
@@ -149,8 +153,9 @@ const BlogDetailpage = () => {
             const resposnse = await API_MANAGER.unLikeArticle(id)
             setIsBlogLiked(false)
         }
-        catch {
-            message.error("Something went wrong")
+        catch (err) {
+            const error = err?.response?.data?.error
+            message.error(error || "Something went wrong")
         }
     }
 
@@ -174,7 +179,7 @@ const BlogDetailpage = () => {
                                 <span className='author'>{blogDetail?.Author}</span>
                             </Col>
                             <Col className='seperator-dots'/>
-                            <Col className='created-date'>Mar 22</Col>
+                            <Col className='created-date'>{moment(blogDetail?.creationTime).format("DD MMM YYYY")}</Col>
                             <Col className='seperator-dots'/>
                             <Col className='reading-time'>2 min read</Col>
                         </Row>

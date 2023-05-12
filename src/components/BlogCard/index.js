@@ -6,6 +6,16 @@ import BlogImage from "../../Assests/blogImage.webp"
 import { IsUserAuthenticated } from '../../utils/middlewares';
 import API_MANAGER from "../../API";
 import {useNavigate} from "react-router-dom";
+import NatureImg from "../../Assests/nature.jpg";
+import NewsImg from "../../Assests/news.jpg";
+import OpinionImg from "../../Assests/opinion.jpg"
+import OtherImg from "../../Assests/other.jpg"
+import PoliticsImg from "../../Assests/politics.jpg"
+import SexImg from "../../Assests/sex.jpg"
+import SpaceImg from "../../Assests/space.jpg"
+import SportsImg from "../../Assests/sports.jpg"
+import TechImg from "../../Assests/tech.jpg"
+import EntertainmentImg from "../../Assests/entertainment.jpg"
 
 const BlogCard = ({blog}) => {
     const [isBlogLiked, setIsBlogLiked] = useState(blog?.isLiked)
@@ -24,14 +34,27 @@ const BlogCard = ({blog}) => {
         sex: "Sex",
         tech: "Tech"
     }
+    const imagesMap = {
+        nature: NatureImg,
+        news: NewsImg,
+        opinion: OpinionImg,
+        other: OtherImg,
+        politics: PoliticsImg,
+        sex: SexImg,
+        space: SpaceImg,
+        sports: SportsImg,
+        tech: TechImg,
+        entertainment: EntertainmentImg
+    }
 
     const likeBlog = async () => {
         try {
             const resposnse = await API_MANAGER.likeArticle()
             setIsBlogLiked(true)
         }
-        catch {
-            message.error("Something went wrong")
+        catch (err) {
+            const error = err?.response?.data?.error
+            message.error(error || "Something went wrong")
         }
     }
 
@@ -40,8 +63,9 @@ const BlogCard = ({blog}) => {
             const resposnse = await API_MANAGER.unLikeArticle()
             setIsBlogLiked(false)
         }
-        catch {
-            message.error("Something went wrong")
+        catch (err) {
+            const error = err?.response?.data?.error
+            message.error(error || "Something went wrong")
         }
     }
 
@@ -52,7 +76,7 @@ const BlogCard = ({blog}) => {
                 onClick={() => navigate(`/blog/${blog.UUID}`)}
             >
             <Col lg={24} xs={24}>
-                <img src={BlogImage} alt="image" className='blog-image'/>
+                <img src={imagesMap[blog?.Tags[0]]} alt="image" className='blog-image'/>
             </Col>
             <Col lg={24} xs={24} className="blogs-heading">
                 {blog?.Title}

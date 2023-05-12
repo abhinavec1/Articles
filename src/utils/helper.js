@@ -16,7 +16,7 @@ const HELPERS = {
         config.headers = config.headers ? config.headers : {}
         const sessionId = Cookies.get("X-Session-Id")
         if (sessionId) {
-            config.withCredentials = true
+            config.headers["X-Session-Id"] = sessionId
         }
         return HELPERS.request(config)
     },

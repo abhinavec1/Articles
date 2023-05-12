@@ -3,6 +3,8 @@
 
     .blog-image {
         // border: 1px solid red;
+        width: 20rem;
+        height: 15rem;
         object-fit: contain;
         // background-repeat: no-repeat;
     }
@@ -44,6 +46,11 @@
 @media screen and (max-width: 600px) {
     .blog-card-container {
         margin-bottom: 2rem;
+
+        .blog-image {
+            width: 15rem;
+            height: 10rem;
+        }
 
         .tags-container {
 

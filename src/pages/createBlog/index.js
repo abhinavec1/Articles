@@ -43,7 +43,8 @@ const CreateBlogPage = () => {
             const response = await API_MANAGER.writeBlog(parsedData)
             message.success("Blog submitted successfully")
         } catch (err) {
-            message.error("Something went wrong")
+            const error = err?.response?.data?.error
+            message.error(error || "Something went wrong")
         }
     }
 

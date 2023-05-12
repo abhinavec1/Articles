@@ -26,28 +26,42 @@ const Header = () => {
     const links = [
         {
             label: "Home",
-            value: "home"
+            value: "home",
+            link: "#"
         },
         {
             label: "About",
-            value: "about"
+            value: "about",
+            link: "#"
         },
         {
             label: "All News",
-            value: "allnews"
+            value: "allnews",
+            link: "#"
         },
         {
             label: "Contact",
-            value: "contact"
+            value: "contact",
+            link: "#"
         },
         {
             label: "Advertise",
-            value: "advertise"
+            value: "advertise",
+            link: "#"
         },
     ]
 
-    const handleLinkClick = (value) => {
+    if (isUserAuthenticated) {
+        links.push({
+            label: "Write",
+            value: "write",
+            link: "write"
+        })
+    }
+
+    const handleLinkClick = (value, url) => {
         setSelectedLink(value)
+        navigate(`/${url}`)
     }
 
     const logoutUser = async () => {
@@ -57,8 +71,13 @@ const Header = () => {
             HELPERS.deleteCookie("X-Session-Id")
         }
         catch (err) {
-            message.error("Something went wrong")
+            const error = err?.response?.data?.error
+            message.error(error || "Something went wrong")
         }
+    }
+
+    const loginUser = () => {
+        navigate('/login')
     }
 
     return (
@@ -70,7 +89,7 @@ const Header = () => {
                         <Col
                             className={item?.value === selectedLink ? "link selected" : "link"}
                             key={item.value}
-                            onClick={() => handleLinkClick(item?.value)}
+                            onClick={() => handleLinkClick(item?.value, item?.link)}
                         >
                             {item.label}
                         </Col>
@@ -98,6 +117,15 @@ const Header = () => {
                                 onClick={logoutUser}
                             >
                                 Logout
+                            </Button>
+                        </Col>
+                    }
+                    {!isUserAuthenticated &&
+                        <Col>
+                            <Button
+                                onClick={loginUser}
+                            >
+                                Login
                             </Button>
                         </Col>
                     }

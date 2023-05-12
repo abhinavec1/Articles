@@ -26,8 +26,8 @@ const RegisterPage = () => {
             message.success("Signup successfull")
         }
         catch (err) {
-            message.error("An error has occured")
-            console.log(err)
+            const error = err?.response?.data?.error
+            message.error(error || "Something went wrong")
         }
       }
 
